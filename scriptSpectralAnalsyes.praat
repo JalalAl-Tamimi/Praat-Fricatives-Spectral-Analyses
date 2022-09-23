@@ -14,6 +14,12 @@ comment: "What is the name of your results file?"
 	comment: "Peak frequency range"
 		positive: "Min frequency peak (Hz)", "750"
 		positive: "Max frequency peak (Hz)", "8000"
+	comment: "Dynamic amplitude - low"
+		positive: "Min frequency amplitude low (Hz)", "550"
+		positive: "Max frequency amplitude low (Hz)", "3000"
+	comment: "Dynamic amplitude - high"
+		positive: "Min frequency amplitude high (Hz)", "3000"
+		positive: "Max frequency amplitude high (Hz)", "7000"
 clicked = endPause: "OK", 1
 
 clearinfo
@@ -151,8 +157,8 @@ select Strings list
 				To Ltas (1-to-1)
 				peakAmpdBStart = Get maximum: min_frequency_peak, max_frequency_peak, "Parabolic"
 				peakFreqHzStart = Get frequency of maximum: min_frequency_peak, max_frequency_peak, "Parabolic"
-				ampLStart = Get minimum: 550, 3000, "Parabolic"
-				ampMStart = Get mean: 3000, 7000, "dB"
+				ampLStart = Get minimum: min_frequency_amplitude_low, max_frequency_amplitude_low, "Parabolic"
+				ampMStart = Get mean: min_frequency_amplitude_high, max_frequency_amplitude_high, "dB"
 				dynamicAmpStart = ampMStart - ampLStart
 
 				# Mid
@@ -182,8 +188,9 @@ select Strings list
 				To Ltas (1-to-1)
 				peakAmpdBMid = Get maximum: min_frequency_peak, max_frequency_peak, "Parabolic"
 				peakFreqHzMid = Get frequency of maximum: min_frequency_peak, max_frequency_peak, "Parabolic"
-				ampLMid = Get minimum: 550, 3000, "Parabolic"
-				ampMMid = Get mean: 3000, 7000, "dB"
+				ampLMid = Get minimum: min_frequency_amplitude_low, max_frequency_amplitude_low, "Parabolic"
+				ampMMid = Get mean: min_frequency_amplitude_high, max_frequency_amplitude_high, "dB"
+				
 				dynamicAmpMid = ampMMid - ampLMid
 
 
@@ -214,8 +221,8 @@ select Strings list
 				To Ltas (1-to-1)
 				peakAmpdBEnd = Get maximum: min_frequency_peak, max_frequency_peak, "Parabolic"
 				peakFreqHzEnd = Get frequency of maximum: min_frequency_peak, max_frequency_peak, "Parabolic"
-				ampLEnd = Get minimum: 550, 3000, "Parabolic"
-				ampMEnd = Get mean: 3000, 7000, "dB"
+				ampLEnd = Get minimum: min_frequency_amplitude_low, max_frequency_amplitude_low, "Parabolic"
+				ampMEnd = Get mean: min_frequency_amplitude_high, max_frequency_amplitude_high, "dB"
 				dynamicAmpEnd = ampMEnd - ampLEnd
 
 
@@ -246,8 +253,8 @@ select Strings list
 				To Ltas (1-to-1)
 				peakAmpdBWhole = Get maximum: min_frequency_peak, max_frequency_peak, "Parabolic"
 				peakFreqHzWhole = Get frequency of maximum: min_frequency_peak, max_frequency_peak, "Parabolic"
-				ampLWhole = Get minimum: 550, 3000, "Parabolic"
-				ampMWhole = Get mean: 3000, 7000, "dB"
+				ampLWhole = Get minimum: min_frequency_amplitude_low, max_frequency_amplitude_low, "Parabolic"
+				ampMWhole = Get mean: min_frequency_amplitude_high, max_frequency_amplitude_high, "dB"
 				dynamicAmpWhole = ampMWhole - ampLWhole
 			
 			elsif label$ = "B"
@@ -279,8 +286,8 @@ select Strings list
 				To Ltas (1-to-1)
 				peakAmpdBStart = Get maximum: min_frequency_peak, max_frequency_peak, "Parabolic"
 				peakFreqHzStart = Get frequency of maximum: min_frequency_peak, max_frequency_peak, "Parabolic"
-				ampLStart = Get minimum: 550, 3000, "Parabolic"
-				ampMStart = Get mean: 3000, 7000, "dB"
+				ampLStart = Get minimum: min_frequency_amplitude_low, max_frequency_amplitude_low, "Parabolic"
+				ampMStart = Get mean: min_frequency_amplitude_high, max_frequency_amplitude_high, "dB"
 				dynamicAmpStart = ampMStart - ampLStart
 
 			endif
