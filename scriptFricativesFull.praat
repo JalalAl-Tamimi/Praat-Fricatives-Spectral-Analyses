@@ -60,7 +60,8 @@ select Strings list
 			mid = start + (duration/2)
 			midBefore = mid - 0.0128
 			midAfter = mid + 0.0128
-
+			burstBefore = mid - 0.0128
+			burstAfter = mid + 0.0128
 			wholeBefore = start + (duration * 0.1)
 			wholeAfter = end - (duration * 0.1)
 
@@ -247,6 +248,38 @@ select Strings list
 				ampLWhole = Get minimum: 550, 3000, "Parabolic"
 				ampMWhole = Get mean: 3000, 7000, "dB"
 				dynamicAmpWhole = ampMWhole - ampLWhole
+			
+			elsif label$ = "B"
+				# Burst
+				selectObject: "Sound 'soundID$'"
+				Extract part: burstBefore, burstAfter, "Kaiser1", 1, "no"
+				if filter = 1
+					resampleFrequency = max_frequency * 2
+					Resample: resampleFrequency, 50
+					Filter (pass Hann band): min_frequency, max_frequency, 100
+				endif
+				To Spectrum: "yes"
+				Cepstral smoothing: 1000
+				cogStart = Get centre of gravity: 2
+				sdevStart = Get standard deviation: 2
+				skewStart = Get skewness: 2
+				kurtStart = Get kurtosis: 2
+				levelMStartPa = Get band energy: 3000, 7000
+				levelMStartPaLevel = levelMStartPa/0.0256
+				levelMStartdB = 10*log10((levelMStartPaLevel/0.00002)^2)
+				levelHStartPa = Get band energy: 7000, 11025
+				levelHStartPaLevel = levelHStartPa/0.0256
+				levelHStartdB = 10*log10((levelHStartPaLevel/0.00002)^2)
+				levelDStartdB = levelMStartdB - levelHStartdB
+
+				Write to binary file: parent_directory$ + "/spectra" + "/" + "'soundID$'_'j'_'label$'_Burst" + ".Spectrum"
+
+				To Ltas (1-to-1)
+				peakAmpdBStart = Get maximum: min_frequency_peak, max_frequency_peak, "Parabolic"
+				peakFreqHzStart = Get frequency of maximum: min_frequency_peak, max_frequency_peak, "Parabolic"
+				ampLStart = Get minimum: 550, 3000, "Parabolic"
+				ampMStart = Get mean: 3000, 7000, "dB"
+				dynamicAmpStart = ampMStart - ampLStart
 
 			endif
 			appendFileLine: "'results$'.xls", fileName$, tab$, label$, tab$, start, tab$, startAfter, tab$, midBefore, tab$, 

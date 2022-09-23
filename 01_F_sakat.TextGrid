@@ -11,7 +11,7 @@ item []:
         name = "phoneme" 
         xmin = 0 
         xmax = 1.0151091488427824 
-        intervals: size = 7 
+        intervals: size = 9 
         intervals [1]:
             xmin = 0 
             xmax = 0.10600718045935764 
@@ -34,9 +34,17 @@ item []:
             text = "a" 
         intervals [6]:
             xmin = 0.5504012966931041 
-            xmax = 0.9021716126495107 
+            xmax = 0.6985509898697292 
             text = "t" 
         intervals [7]:
+            xmin = 0.6985509898697292 
+            xmax = 0.7061068920193339 
+            text = "B" 
+        intervals [8]:
+            xmin = 0.7061068920193339 
+            xmax = 0.9021716126495107 
+            text = "Asp" 
+        intervals [9]:
             xmin = 0.9021716126495107 
             xmax = 1.0151091488427824 
             text = "#" 
