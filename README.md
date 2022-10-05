@@ -1,6 +1,6 @@
 # Praat-Fricatives-Spectral-Analyses
 
-This Praat script "scriptSpectralAnalsyes.praat" allows the user to obtain various spectral measures from fricatives and stops. The script iterates across all sound files and associated TextGrids. It is restricted to analysing [s] but this can be modified by the user within the script (line 126; add the following: or label$ = "sh", etc..). It also analyses the burst if this is marked with a B.
+This Praat script "scriptSpectralAnalsyes.praat" allows the user to obtain various spectral measures from fricatives and stops. The script iterates across all sound files and associated TextGrids. It is restricted to analysing [s] but this can be modified by the user within the script (line 132; add the following: or label$ = "sh", etc..). It also analyses the burst if this is marked with a B (line 260).
 
 For fricatives, the script provides measurements at the start, mid and end portions (window size of 0.0256). In addition, the script provides readings for the whole portion that is defined as 80% within the fricative to restrict the analysis to the actual fricative and ignoring any transitions. For stops, the window size is 0.0256 centred at the burst's midpoint. A DFT with 256 bins is created (after resampling and high-pass filtering; user specific values can be entered), without any zero-padding. The DFT is then smoothed by a cepstral smoothing with a bandwidth of 1000Hz. 
 
