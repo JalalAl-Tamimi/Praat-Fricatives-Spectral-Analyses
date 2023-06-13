@@ -6,7 +6,7 @@
 #### Any comments, or questions? send me a message through github 
 beginPause: "Script spectral analyses - stops"
 comment: "Leave empty to select with the browser your path"
-sentence: "parent_directory", "D:\ArticlesResearch\GitHub_scripts\Praat\spectral_analyses"
+sentence: "parent_directory", ""
 comment: "What is the name of your results file?"
   	sentence: "results", "spectralResultsStops"
   	comment: "Tier number"
